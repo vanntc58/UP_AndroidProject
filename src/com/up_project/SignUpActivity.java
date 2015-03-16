@@ -28,10 +28,47 @@ public class SignUpActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
-		signup = (Button) findViewById(R.id.btnSignUp);
+
 		email = (EditText) findViewById(R.id.etEmail);
 		username = (EditText) findViewById(R.id.etUserName);
 		password = (EditText) findViewById(R.id.etPass);
+		signup = (Button) findViewById(R.id.btnSignUp);
+		
+		signup.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				//signUp();
+				ConnectionConfiguration connConfig = new ConnectionConfiguration(
+						"127.0.0.1", 5222);
+				XMPPConnection connection = new XMPPTCPConnection(connConfig);
+
+				AccountManager accountManager;
+				connConfig.setSecurityMode(SecurityMode.disabled);
+
+				try {
+					connection.connect();
+					accountManager = AccountManager.getInstance(connection);
+
+					Map<String, String> attributes = new HashMap<String, String>();
+					attributes.put("username", username.getText().toString());
+					attributes.put("password", password.getText().toString());
+					attributes.put("email", email.getText().toString());
+					try {
+						accountManager.createAccount(username.getText().toString(),
+								password.getText().toString(), attributes);
+
+					} catch (XMPPErrorException err) {
+						err.printStackTrace();
+					}
+				} catch (Exception err) {
+					err.printStackTrace();
+
+				}
+
+			}
+		});
 	}
 
 	@Override
@@ -41,18 +78,15 @@ public class SignUpActivity extends Activity {
 		return true;
 	}
 
-	public SignUpActivity(View v) {
-		signup.setOnClickListener(new View.OnClickListener() {
+	/*
+	 * public SignUpActivity(View v) { signup.setOnClickListener(new
+	 * View.OnClickListener() {
+	 * 
+	 * @Override public void onClick(View arg0) { // TODO Auto-generated method
+	 * stub signUp(); } }); }
+	 */
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				signUp();
-			}
-		});
-	}
-
-	protected void signUp() {
+	/*protected void signUp() {
 		// TODO Auto-generated method stub
 		ConnectionConfiguration connConfig = new ConnectionConfiguration(
 				"127.0.0.1", 5222);
@@ -80,6 +114,6 @@ public class SignUpActivity extends Activity {
 			err.printStackTrace();
 
 		}
-	}
+	}*/
 
 }

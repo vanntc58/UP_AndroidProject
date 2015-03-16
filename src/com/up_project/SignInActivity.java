@@ -28,6 +28,14 @@ public class SignInActivity extends Activity {
 		username = (EditText) findViewById(R.id.etUserName);
 		password = (EditText) findViewById(R.id.etPass);
 		signin = (Button) findViewById(R.id.btnSingIn);
+		signin.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				connect();
+			}
+		});
 	}
 
 	@Override
@@ -37,7 +45,7 @@ public class SignInActivity extends Activity {
 		return true;
 	}
 	
-	public SignInActivity (View view) {
+	/*public SignInActivity (View view) {
 		signin.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -46,7 +54,7 @@ public class SignInActivity extends Activity {
 				connect();
 			}
 		});
-	}
+	}*/
 
 	private static class LoginMethod {
 
@@ -99,6 +107,8 @@ public class SignInActivity extends Activity {
 				loginMethod.login(username.getText().toString(), password
 						.getText().toString());
 				isSignIn = true;
+				Toast.makeText(getApplicationContext(),
+						"Connect successful", Toast.LENGTH_SHORT).show();
 			} catch (Exception exp) {
 				Toast.makeText(getApplicationContext(),
 						"Can't connect to server", Toast.LENGTH_SHORT).show();
