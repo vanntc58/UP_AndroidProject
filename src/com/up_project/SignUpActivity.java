@@ -10,6 +10,7 @@ import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException.XMPPErrorException;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -58,7 +59,10 @@ public class SignUpActivity extends Activity {
 					try {
 						accountManager.createAccount(username.getText().toString(),
 								password.getText().toString(), attributes);
-
+						Toast.makeText(getApplicationContext(),
+							"Register successful", Toast.LENGTH_SHORT).show();
+						Intent myIntent = new Intent(this, SignInActivity.class);
+						startActivity(myIntent);
 					} catch (XMPPErrorException err) {
 						err.printStackTrace();
 					}
