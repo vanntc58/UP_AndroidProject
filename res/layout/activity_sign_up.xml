@@ -22,7 +22,9 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
             android:background="@drawable/edittext_top_bg"
+            android:drawableLeft="@drawable/ic_email"
             android:hint="@string/email"
             android:padding="10dp"
             android:textColorHint="#bbbbbb" />
@@ -33,6 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="-2dp"
             android:background="@drawable/edittext_default_bg"
+            android:drawableLeft="@drawable/ic_user"
             android:hint="@string/user_name"
             android:padding="10dp"
             android:textColorHint="#bbbbbb" />
@@ -49,7 +52,7 @@
             android:textColorHint="#bbbbbb" />
 
         <Button
-            android:id="@+id/btnSingIn"
+            android:id="@+id/btnSignUp1"
             style="@style/DefaultButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

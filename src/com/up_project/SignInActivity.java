@@ -27,7 +27,7 @@ public class SignInActivity extends Activity {
 		setContentView(R.layout.activity_sign_in);
 		username = (EditText) findViewById(R.id.etUserName);
 		password = (EditText) findViewById(R.id.etPass);
-		signin = (Button) findViewById(R.id.btnSingIn);
+		signin = (Button) findViewById(R.id.btnSignIn1);
 		signin.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -45,17 +45,6 @@ public class SignInActivity extends Activity {
 		return true;
 	}
 	
-	/*public SignInActivity (View view) {
-		signin.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				connect();
-			}
-		});
-	}*/
-
 	private static class LoginMethod {
 
 		// set up before connect
@@ -72,6 +61,7 @@ public class SignInActivity extends Activity {
 			try {
 				connection.connect();
 			} catch (Exception e) {
+				e.printStackTrace();
 				throw e;
 			}
 		}
@@ -81,6 +71,7 @@ public class SignInActivity extends Activity {
 			try {
 				connection.login(userName, password);
 			} catch (Exception e) {
+				e.printStackTrace();
 				throw e;
 			}
 		}
@@ -99,6 +90,7 @@ public class SignInActivity extends Activity {
 			loginMethod.connect();
 			isConnected = true;
 		} catch (Exception exp) {
+			exp.printStackTrace();
 			Toast.makeText(getApplicationContext(), "Can't connect to server",
 					Toast.LENGTH_SHORT).show();
 		}
@@ -108,10 +100,11 @@ public class SignInActivity extends Activity {
 						.getText().toString());
 				isSignIn = true;
 				Toast.makeText(getApplicationContext(),
-						"Connect successful", Toast.LENGTH_SHORT).show();
+						"Login successful!", Toast.LENGTH_SHORT).show();
 			} catch (Exception exp) {
+				exp.printStackTrace();
 				Toast.makeText(getApplicationContext(),
-						"Can't connect to server", Toast.LENGTH_SHORT).show();
+						"Fail to login!", Toast.LENGTH_SHORT).show();
 			}
 
 	}

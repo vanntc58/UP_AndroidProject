@@ -29,7 +29,7 @@
             android:text="@string/sign_up" />
 
         <Button
-            android:id="@+id/btnSingIn"
+            android:id="@+id/btnSignIn"
             style="@style/DefaultButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

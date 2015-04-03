@@ -21,10 +21,12 @@
             android:id="@+id/etUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
             android:background="@drawable/edittext_top_bg"
             android:hint="@string/user_name"
             android:padding="10dp"
-            android:textColorHint="#cccccc" />
+            android:textColorHint="#cccccc"
+            android:drawableLeft="@drawable/ic_user" />
 
         <EditText
             android:id="@+id/etPass"
@@ -36,10 +38,12 @@
             android:padding="10dp"
             android:password="true"
             android:textColorHint="#cccccc"
-            tools:ignore="Deprecated" />
+            tools:ignore="Deprecated"
+             
+            />
 
         <Button
-            android:id="@+id/btnSingIn"
+            android:id="@+id/btnSignIn1"
             style="@style/DefaultButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

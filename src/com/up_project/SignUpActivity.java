@@ -10,13 +10,13 @@ import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException.XMPPErrorException;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class SignUpActivity extends Activity {
 
@@ -33,44 +33,13 @@ public class SignUpActivity extends Activity {
 		email = (EditText) findViewById(R.id.etEmail);
 		username = (EditText) findViewById(R.id.etUserName);
 		password = (EditText) findViewById(R.id.etPass);
-		signup = (Button) findViewById(R.id.btnSignUp);
-		
+		signup = (Button) findViewById(R.id.btnSignUp1);
+
 		signup.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				//signUp();
-				ConnectionConfiguration connConfig = new ConnectionConfiguration(
-						"127.0.0.1", 5222);
-				XMPPConnection connection = new XMPPTCPConnection(connConfig);
-
-				AccountManager accountManager;
-				connConfig.setSecurityMode(SecurityMode.disabled);
-
-				try {
-					connection.connect();
-					accountManager = AccountManager.getInstance(connection);
-
-					Map<String, String> attributes = new HashMap<String, String>();
-					attributes.put("username", username.getText().toString());
-					attributes.put("password", password.getText().toString());
-					attributes.put("email", email.getText().toString());
-					try {
-						accountManager.createAccount(username.getText().toString(),
-								password.getText().toString(), attributes);
-						Toast.makeText(getApplicationContext(),
-							"Register successful", Toast.LENGTH_SHORT).show();
-						Intent myIntent = new Intent(this, SignInActivity.class);
-						startActivity(myIntent);
-					} catch (XMPPErrorException err) {
-						err.printStackTrace();
-					}
-				} catch (Exception err) {
-					err.printStackTrace();
-
-				}
-
+				signUp();
 			}
 		});
 	}
@@ -82,16 +51,7 @@ public class SignUpActivity extends Activity {
 		return true;
 	}
 
-	/*
-	 * public SignUpActivity(View v) { signup.setOnClickListener(new
-	 * View.OnClickListener() {
-	 * 
-	 * @Override public void onClick(View arg0) { // TODO Auto-generated method
-	 * stub signUp(); } }); }
-	 */
-
-	/*protected void signUp() {
-		// TODO Auto-generated method stub
+	protected void signUp() {
 		ConnectionConfiguration connConfig = new ConnectionConfiguration(
 				"127.0.0.1", 5222);
 		XMPPConnection connection = new XMPPTCPConnection(connConfig);
@@ -110,14 +70,14 @@ public class SignUpActivity extends Activity {
 			try {
 				accountManager.createAccount(username.getText().toString(),
 						password.getText().toString(), attributes);
-
 			} catch (XMPPErrorException err) {
 				err.printStackTrace();
+				Toast.makeText(getApplicationContext(), "Fail to signup", Toast.LENGTH_SHORT).show();
 			}
 		} catch (Exception err) {
 			err.printStackTrace();
-
+			Toast.makeText(getApplicationContext(), "Can't connect to server", Toast.LENGTH_SHORT).show();
 		}
-	}*/
+	}
 
 }

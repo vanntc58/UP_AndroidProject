@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		signIn = (Button) findViewById(R.id.btnSingIn);
+		signIn = (Button) findViewById(R.id.btnSignIn);
 		signUp = (Button )findViewById(R.id.btnSignUp);
 		
 		signIn.setOnClickListener(new View.OnClickListener() {
@@ -41,14 +41,14 @@ public class MainActivity extends Activity {
 
 	protected void SignUp() {
 		// TODO Auto-generated method stub
-		Intent myIntent = new Intent(this, SignUpActivity.class);
-		startActivity(myIntent);
+		Intent signUp = new Intent(this, SignUpActivity.class);
+		startActivity(signUp);
 	}
 
 	protected void SignIn() {
 		// TODO Auto-generated method stub
-		Intent myIntent = new Intent(this, SignInActivity.class);
-		startActivity(myIntent);
+		Intent signIn = new Intent(this, SignInActivity.class);
+		startActivity(signIn);
 	}
 
 	@Override
